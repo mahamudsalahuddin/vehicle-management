@@ -1,0 +1,120 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:chassis_number",
+ "creation": "2023-10-29 11:59:23.962746",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "car_model",
+  "chassis_number",
+  "model_year",
+  "shape",
+  "auction_grade",
+  "package",
+  "color",
+  "milage",
+  "cc",
+  "seat_capacity",
+  "origin_origin_country",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "car_model",
+   "fieldtype": "Link",
+   "label": "Car Model",
+   "options": "Car Model"
+  },
+  {
+   "fieldname": "chassis_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Chassis Number",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "model_year",
+   "fieldtype": "Link",
+   "label": "Model Year",
+   "options": "Model Year"
+  },
+  {
+   "fieldname": "shape",
+   "fieldtype": "Select",
+   "label": "Shape",
+   "options": "Old\nNew"
+  },
+  {
+   "fieldname": "auction_grade",
+   "fieldtype": "Link",
+   "label": "Auction Grade",
+   "options": "Auction Grade"
+  },
+  {
+   "fieldname": "package",
+   "fieldtype": "Data",
+   "label": "Package"
+  },
+  {
+   "fieldname": "color",
+   "fieldtype": "Link",
+   "label": "Color",
+   "options": "Color"
+  },
+  {
+   "fieldname": "milage",
+   "fieldtype": "Float",
+   "label": "Milage"
+  },
+  {
+   "fieldname": "cc",
+   "fieldtype": "Float",
+   "label": "CC"
+  },
+  {
+   "fieldname": "seat_capacity",
+   "fieldtype": "Int",
+   "label": "Seat Capacity"
+  },
+  {
+   "fieldname": "origin_origin_country",
+   "fieldtype": "Link",
+   "label": "Origin Origin Country",
+   "options": "Country"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-10-29 11:59:23.962746",
+ "modified_by": "Administrator",
+ "module": "Vehicle Management",
+ "name": "Vehicle Details",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
