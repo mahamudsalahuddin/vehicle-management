@@ -59,45 +59,53 @@
    "fetch_from": "vehicle_chassis_no.car_model",
    "fieldname": "vehicle_name",
    "fieldtype": "Data",
-   "label": "Vehicle Name"
+   "label": "Vehicle Name",
+   "read_only": 1
   },
   {
    "fetch_from": "vehicle_chassis_no.model_year",
    "fieldname": "model_year",
    "fieldtype": "Data",
-   "label": "Model Year"
+   "label": "Model Year",
+   "read_only": 1
   },
   {
    "fetch_from": "vehicle_chassis_no.shape",
    "fieldname": "shape",
    "fieldtype": "Data",
-   "label": "Shape"
+   "label": "Shape",
+   "read_only": 1
   },
   {
    "fetch_from": "vehicle_chassis_no.auction_grade",
    "fieldname": "auction_grade",
    "fieldtype": "Data",
-   "label": "Auction Grade"
+   "label": "Auction Grade",
+   "read_only": 1
   },
   {
    "fetch_from": "vehicle_chassis_no.color",
    "fieldname": "color",
    "fieldtype": "Data",
-   "label": "Color"
+   "label": "Color",
+   "read_only": 1
   },
   {
    "fetch_from": "vehicle_chassis_no.milage",
    "fieldname": "milage",
    "fieldtype": "Data",
-   "label": "Milage"
+   "label": "Milage",
+   "read_only": 1
   },
   {
    "fetch_from": "vehicle_chassis_no.cc",
    "fieldname": "cc",
    "fieldtype": "Data",
-   "label": "CC"
+   "label": "CC",
+   "read_only": 1
   },
   {
+   "fetch_from": "vehicle_chassis_no.description",
    "fieldname": "description",
    "fieldtype": "Text Editor",
    "label": "Description"
@@ -195,7 +203,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-10-29 17:56:17.014883",
+ "modified": "2023-10-30 10:41:45.533912",
  "modified_by": "Administrator",
  "module": "Vehicle Management",
  "name": "Vehicle Availability",
@@ -215,7 +223,6 @@
    "write": 1
   }
  ],
- "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],

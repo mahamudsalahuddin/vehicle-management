@@ -14,11 +14,13 @@
   "shape",
   "auction_grade",
   "package",
+  "column_break_e2k8k",
   "color",
   "milage",
   "cc",
   "seat_capacity",
   "origin_origin_country",
+  "section_break_iia6f",
   "description"
  ],
  "fields": [
@@ -83,18 +85,26 @@
   {
    "fieldname": "origin_origin_country",
    "fieldtype": "Link",
-   "label": "Origin Origin Country",
+   "label": "Origin Country",
    "options": "Country"
   },
   {
    "fieldname": "description",
    "fieldtype": "Text Editor",
    "label": "Description"
+  },
+  {
+   "fieldname": "column_break_e2k8k",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_iia6f",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-29 11:59:23.962746",
+ "modified": "2023-10-30 09:45:31.661663",
  "modified_by": "Administrator",
  "module": "Vehicle Management",
  "name": "Vehicle Details",
