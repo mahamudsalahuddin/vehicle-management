@@ -1,44 +1,38 @@
 frappe.ui.form.on('Vehicle Availability', {
-	status: function(frm) {
-		let emptyObj = {}
+	status: function(frm, cdt, cdn) {
+		let emptyArr = []
 		if(frm.doc.status =="Port"){
-			frm.doc.other_details =""
-			frm.doc.workshop_address =""
-			frm.doc.house_address =""
-			frm.doc.ship_details =""
-			
+			emptyArr = ["ship_details", "house_address", "workshop_address", "other_details"]
+			emptyfunc(emptyArr)
 		}
 		else if(frm.doc.status =="Onship"){
-			emptyfunc({port_location,shed_number,house_address,})
+			emptyArr = ["port_location","shed_number", "house_address", "workshop_address", "other_details"]
+			emptyfunc(emptyArr)
 		}
 		else if(frm.doc.status =="Inhouse"){
-			emptyfunc()
+			emptyArr = ["port_location","shed_number", "ship_details", "workshop_address", "other_details"]
+			emptyfunc(emptyArr)
 		}
 		else if(frm.doc.status =="Workshop"){
-			emptyfunc()
+			emptyArr = ["port_location","shed_number", "ship_details", "house_address", "other_details"]
+			emptyfunc(emptyArr)
 		}
 		else if(frm.doc.status =="Other"){
-			emptyfunc()
+			emptyArr = ["port_location","shed_number", "ship_details", "house_address", "workshop_address"]
+			emptyfunc(emptyArr)
 		}
 		else{
-
+			emptyArr = ["port_location","shed_number", "ship_details", "house_address", "workshop_address","other_details"]
+			emptyfunc(emptyArr)
 		}
+		
 		function emptyfunc(...arr){
-			console.log(typeof(arr));
-			frm.doc.a =""
-			frm.doc.b =""
-			frm.doc.c =""
-			frm.doc.d =""
-			emptyObj = {}
-		}
+			arr[0].map((attributeName)=>{
+				frappe.model.set_value(cdt, cdn, attributeName, "");	
+				refresh_field(attributeName);
 
-			// port_location
-			// shed_number
-			// frm.doc.ship_details== ""
-			// frm.doc.house_address== ""
-			// frm.doc.workshop_address== ""
-			// frm.doc.other_details== ""
-			// house_address 
-			// workshop_address other_details
+			})
+			
+		}
 	}
 });
