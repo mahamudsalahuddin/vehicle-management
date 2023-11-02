@@ -1,36 +1,49 @@
 frappe.ui.form.on('Vehicle Price', {
-	// refresh: function(frm) {
+	// company_price: function (frm) {
+	// 	frm.set_value('sale_price', (frm.doc.company_price + frm.doc.customer_price))
+	// 	// frm.refresh_field('sale_price');
+	// },
+	// customer_price: function (frm) {
+	// 	frm.set_value('sale_price', (frm.doc.customer_price + frm.doc.company_price))
+	// 	// frm.refresh_field('sale_price');
+	// },
 
-	// }
-	company_price:function(frm){
-		console.log(frm);
-		frm.set_value('sale_price', (frm.doc.company_price + frm.doc.customer_price))
-	},
-	customer_price:function(frm){
-		frm.set_value('sale_price', (frm.doc.customer_price + frm.doc.company_price ))
-	},
-	
+	setup:(frm) => {
+		frm.calculate_amount_in_child_table = function(frm){
+			frm.doc.table.forEach(item => {
+				item.item_amount = item.item_qty * item.item_rate;
+			})
+			frm.refresh_field('table');
+		}
+
+		frm.calculate_total_qty_and_amount = (frm) => {
+			let totalQty = 0, totalAmount = 0;
+			frm.doc.table.forEach(item => {
+				totalQty += item.item_qty;
+				totalAmount += item.item_amount;
+			})
+			frm.set_value('total_qty', totalQty)
+			frm.set_value('total_amount', totalAmount)
+		}
+	}
+
 });
 
 frappe.ui.form.on("Other Vehicle Items", {
-    item_quantity: function(frm,cdt,cdn) {
-        var d = locals[cdt][cdn];
-        frappe.model.set_value(cdt, cdn, 'item_amount', (d.item_quantity + d.item_rate));
-       // frm.refresh_field('child_table_name');
-    },
-	item_rate: function(frm,cdt,cdn) {
-        var d = locals[cdt][cdn];
-		console.log(d);
-        frappe.model.set_value(cdt, cdn, 'item_amount', (d.item_quantity + d.item_rate));
-    },
-
-	item:function(frm){
-		// frm.set_value('sale_price', (frm.doc.customer_price + frm.doc.company_price ))
-		// console.log(frm.fields_dict.table.grid.frm.doc.table[0].item)
-		var a = Object.keys(frm.fields_dict.table.grid.frm.doc.table).length
-		// for(var i= 0; i<=a; a++){
-		// 	// console.log(frm.fields_dict.table.grid.frm.doc.table[i])
-		// }
+	item_qty: (frm, cdt, cdn) => {
+		let row = locals[cdt][cdn];
+		frm.calculate_amount_in_child_table(frm);
+		frm.calculate_total_qty_and_amount(frm);
 
 	},
+	item_rate: (frm, cdt, cdn) => {
+		var row = locals[cdt][cdn];
+		frm.calculate_amount_in_child_table(frm);
+		frm.calculate_total_qty_and_amount(frm);
+
+	},
+
 });
+
+
+

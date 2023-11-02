@@ -18,7 +18,11 @@
   "customer_price",
   "sale_price",
   "amended_from",
-  "table"
+  "table",
+  "section_break_2vnre",
+  "total_qty",
+  "column_break_z27j4",
+  "total_amount"
  ],
  "fields": [
   {
@@ -81,6 +85,7 @@
    "reqd": 1
   },
   {
+   "default": "0.0",
    "fieldname": "sale_price",
    "fieldtype": "Currency",
    "label": "Sale Price",
@@ -91,12 +96,34 @@
    "fieldtype": "Table",
    "label": "Table",
    "options": "Other Vehicle Items"
+  },
+  {
+   "default": "0.0",
+   "fieldname": "total_qty",
+   "fieldtype": "Float",
+   "label": "Total Quantity",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_z27j4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_2vnre",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-10-31 12:58:15.550592",
+ "modified": "2023-11-02 12:06:02.630459",
  "modified_by": "Administrator",
  "module": "Vehicle Management",
  "name": "Vehicle Price",
