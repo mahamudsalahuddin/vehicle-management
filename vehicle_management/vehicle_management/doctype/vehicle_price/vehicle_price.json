@@ -22,7 +22,9 @@
   "section_break_2vnre",
   "total_qty",
   "column_break_z27j4",
-  "total_amount"
+  "total_amount",
+  "totals_section",
+  "grand_total"
  ],
  "fields": [
   {
@@ -73,12 +75,14 @@
    "label": "Vehicle Price"
   },
   {
+   "default": "0",
    "fieldname": "company_price",
    "fieldtype": "Currency",
    "label": "Company Price",
    "reqd": 1
   },
   {
+   "default": "0",
    "fieldname": "customer_price",
    "fieldtype": "Currency",
    "label": "Customer Price",
@@ -118,12 +122,24 @@
   {
    "fieldname": "section_break_2vnre",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "totals_section",
+   "fieldtype": "Section Break",
+   "label": "Totals"
+  },
+  {
+   "default": "0",
+   "fieldname": "grand_total",
+   "fieldtype": "Currency",
+   "label": "Grand Total",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-11-02 12:06:02.630459",
+ "modified": "2023-11-05 13:33:43.093852",
  "modified_by": "Administrator",
  "module": "Vehicle Management",
  "name": "Vehicle Price",
