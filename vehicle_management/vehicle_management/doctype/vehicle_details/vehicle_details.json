@@ -19,7 +19,7 @@
   "milage",
   "cc",
   "seat_capacity",
-  "origin_origin_country",
+  "origin_country",
   "section_break_iia6f",
   "description"
  ],
@@ -83,12 +83,6 @@
    "label": "Seat Capacity"
   },
   {
-   "fieldname": "origin_origin_country",
-   "fieldtype": "Link",
-   "label": "Origin Country",
-   "options": "Country"
-  },
-  {
    "fieldname": "description",
    "fieldtype": "Text Editor",
    "label": "Description"
@@ -100,11 +94,17 @@
   {
    "fieldname": "section_break_iia6f",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "origin_country",
+   "fieldtype": "Link",
+   "label": "Origin Country",
+   "options": "Country"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-30 09:45:31.661663",
+ "modified": "2023-11-09 12:12:13.138839",
  "modified_by": "Administrator",
  "module": "Vehicle Management",
  "name": "Vehicle Details",

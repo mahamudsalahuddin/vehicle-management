@@ -48,6 +48,23 @@ frappe.ui.form.on('Vehicle Price', {
 		frm.add_sale_price_and_total_amount = (frm)=>{
 			frm.sale_price_plus_total_amount(frm);
 		}
+		frm.check_items_duplicate = function(frm, row){
+			// console.log(row);
+			frm.doc.table.forEach(items =>{
+				// console.log(items)
+				if(row.item == '' || row.idx == items.idx){
+				}
+				else{
+					if(row.item == items.item){
+						row.item = '';
+						frm.refresh_field('table');
+						frappe.throw(__(`${items.item} already exists in row ${items.idx}`));
+						// frappe.msgprint("already exists in row");
+						
+					}
+				}
+			})
+		}
 	}
 
 });
@@ -73,7 +90,10 @@ frappe.ui.form.on("Other Vehicle Items", {
 		var row = locals[cdt][cdn];
 		frm.add_sale_price_and_total_amount(frm);
 	},
-
+	item: (frm, cdt, cdn) => {
+		var row = locals[cdt][cdn];
+		frm.check_items_duplicate(frm, row);
+	}
 });
 
 

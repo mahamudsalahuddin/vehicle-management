@@ -1,14 +1,14 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "vehicle_price_series",
+ "autoname": "naming_series:",
  "creation": "2023-10-31 11:12:33.557542",
  "default_view": "List",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "vehicle_price_series",
+  "naming_series",
   "posting_date",
   "vehicle_info_section",
   "vehicle_chassis_no",
@@ -27,14 +27,6 @@
   "grand_total"
  ],
  "fields": [
-  {
-   "fieldname": "vehicle_price_series",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Series",
-   "options": "Vehicle_Price-###",
-   "reqd": 1
-  },
   {
    "fieldname": "posting_date",
    "fieldtype": "Date",
@@ -134,16 +126,26 @@
    "fieldtype": "Currency",
    "label": "Grand Total",
    "read_only": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Series",
+   "no_copy": 1,
+   "options": "VA-NO-.YYYY.-",
+   "reqd": 1,
+   "set_only_once": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-11-05 13:33:43.093852",
+ "modified": "2023-11-09 14:37:12.446179",
  "modified_by": "Administrator",
  "module": "Vehicle Management",
  "name": "Vehicle Price",
- "naming_rule": "By fieldname",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
@@ -161,6 +163,5 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": [],
- "track_changes": 1
+ "states": []
 }
