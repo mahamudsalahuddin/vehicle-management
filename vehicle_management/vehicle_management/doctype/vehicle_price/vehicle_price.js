@@ -49,9 +49,7 @@ frappe.ui.form.on('Vehicle Price', {
 			frm.sale_price_plus_total_amount(frm);
 		}
 		frm.check_items_duplicate = function(frm, row){
-			// console.log(row);
 			frm.doc.table.forEach(items =>{
-				// console.log(items)
 				if(row.item == '' || row.idx == items.idx){
 				}
 				else{

@@ -28,6 +28,7 @@
  ],
  "fields": [
   {
+   "default": "Today",
    "fieldname": "posting_date",
    "fieldtype": "Date",
    "in_list_view": 1,
@@ -141,7 +142,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-11-09 14:37:12.446179",
+ "modified": "2023-11-12 10:37:39.946963",
  "modified_by": "Administrator",
  "module": "Vehicle Management",
  "name": "Vehicle Price",
