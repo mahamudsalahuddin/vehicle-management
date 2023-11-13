@@ -1,6 +1,5 @@
 {
  "actions": [],
- "allow_rename": 1,
  "autoname": "naming_series:",
  "creation": "2023-10-31 11:12:33.557542",
  "default_view": "List",
@@ -142,7 +141,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-11-12 10:37:39.946963",
+ "modified": "2023-11-12 18:02:26.722363",
  "modified_by": "Administrator",
  "module": "Vehicle Management",
  "name": "Vehicle Price",
