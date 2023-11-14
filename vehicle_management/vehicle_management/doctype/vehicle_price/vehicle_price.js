@@ -13,7 +13,7 @@ frappe.ui.form.on('Vehicle Price', {
 	setup:(frm) => {
 		// To calculate sale price (customer price + company price)
 		frm.calculate_sale_price=(frm)=>{
-				frm.set_value('sale_price', (frm.doc.customer_price  + frm.doc.company_price))
+			frm.set_value('sale_price', (frm.doc.customer_price  + frm.doc.company_price))
 				
 		}
 		// To calculate item amount =(quality*rate)
@@ -25,7 +25,10 @@ frappe.ui.form.on('Vehicle Price', {
 		}
 		// To calculate total quantity, total amount and grand total
 		frm.calculate_total_qty_and_amount = (frm) => {
-			let totalQty = 0, totalAmount = 0;
+			let totalQty = 0, totalAmount = 0, grandTotal=0;
+			frm.set_value('total_qty', totalQty)
+			frm.set_value('total_amount', totalAmount)
+			frm.set_value('grand_total', grandTotal)
 			if(frm.doc.table!=undefined){
 				frm.doc.table.forEach(item => {
 					totalQty += item.item_qty;
@@ -37,8 +40,8 @@ frappe.ui.form.on('Vehicle Price', {
 				})
 			}else{
 				let grandTotal = frm.doc.sale_price 
-				// frm.set_value('total_qty', 0)
-				// frm.set_value('total_amount', 0)
+				frm.set_value('total_qty', totalQty)
+				frm.set_value('total_amount', totalAmount)
 				frm.set_value('grand_total', grandTotal)
 			}
 		}
@@ -46,10 +49,9 @@ frappe.ui.form.on('Vehicle Price', {
 		frm.table_items_remove = (frm)=>{
 			frm.calculate_amount_in_child_table(frm);
 			frm.calculate_total_qty_and_amount(frm);
+			
 		}
-		// frm.add_sale_price_and_total_amount = (frm)=>{
-		// 	frm.sale_price_plus_total_amount(frm);
-		// }
+		// This function check the adding item is duplicate or not. if duplicate than show error
 		frm.check_items_duplicate = function(frm, row){
 			frm.doc.table.forEach(items =>{
 				if(row.item == '' || row.idx == items.idx){
@@ -59,8 +61,6 @@ frappe.ui.form.on('Vehicle Price', {
 						row.item = '';
 						frm.refresh_field('table');
 						frappe.throw(__(`${items.item} already exists in row ${items.idx}`));
-						// frappe.msgprint("already exists in row");
-						
 					}
 				}
 			})
@@ -75,6 +75,7 @@ frappe.ui.form.on("Other Vehicle Items", {
 		frm.calculate_amount_in_child_table(frm);
 		frm.calculate_total_qty_and_amount(frm);
 
+
 	},
 	item_rate: (frm, cdt, cdn) => {
 		var row = locals[cdt][cdn];
@@ -86,10 +87,6 @@ frappe.ui.form.on("Other Vehicle Items", {
 		var row = locals[cdt][cdn];
 		frm.table_items_remove(frm);
 	},
-	// grand_total: (frm, cdt, cdn) => {
-	// 	var row = locals[cdt][cdn];
-	// 	frm.add_sale_price_and_total_amount(frm);
-	// },
 	item: (frm, cdt, cdn) => {
 		var row = locals[cdt][cdn];
 		frm.check_items_duplicate(frm, row);
