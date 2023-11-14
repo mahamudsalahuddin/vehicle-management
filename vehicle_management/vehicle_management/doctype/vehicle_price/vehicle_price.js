@@ -1,13 +1,16 @@
+// ==========================================================================================
+// 										For Vehicle Price doctype
+// ==========================================================================================
 frappe.ui.form.on('Vehicle Price', {
 	company_price: function (frm) {
 		frm.calculate_sale_price(frm)
 		// It call here for grand total
-		frm.calculate_total_qty_and_amount(frm)
+		frm.calculate_grand_total(frm)
 	},
 	customer_price: function (frm) {
 		frm.calculate_sale_price(frm)
 		// It call here for grand total
-		frm.calculate_total_qty_and_amount(frm)
+		frm.calculate_grand_total(frm)
 	},
 
 	setup:(frm) => {
@@ -23,32 +26,26 @@ frappe.ui.form.on('Vehicle Price', {
 			})
 			frm.refresh_field('table');
 		}
-		// To calculate total quantity, total amount and grand total
+		// To calculate total quantity, total amount
 		frm.calculate_total_qty_and_amount = (frm) => {
-			let totalQty = 0, totalAmount = 0, grandTotal=0;
-			frm.set_value('total_qty', totalQty)
-			frm.set_value('total_amount', totalAmount)
-			frm.set_value('grand_total', grandTotal)
-			if(frm.doc.table!=undefined){
+			let totalQty = 0, totalAmount = 0
 				frm.doc.table.forEach(item => {
 					totalQty += item.item_qty;
 					totalAmount += item.item_amount;
-					frm.set_value('total_qty', totalQty)
-					frm.set_value('total_amount', totalAmount)
-					let grandTotal = frm.doc.sale_price + totalAmount
-					frm.set_value('grand_total', grandTotal)
 				})
-			}else{
-				let grandTotal = frm.doc.sale_price 
 				frm.set_value('total_qty', totalQty)
 				frm.set_value('total_amount', totalAmount)
-				frm.set_value('grand_total', grandTotal)
-			}
+				frm.calculate_grand_total(frm)
+		}
+		// To calculate grand total
+		frm.calculate_grand_total = (frm) => {
+			let grandTotal= frm.doc.sale_price + frm.doc.total_amount
+			frm.set_value('grand_total', grandTotal)
 		}
 		// To remove items from child table
 		frm.table_items_remove = (frm)=>{
-			frm.calculate_amount_in_child_table(frm);
 			frm.calculate_total_qty_and_amount(frm);
+			frm.calculate_grand_total(frm)
 			
 		}
 		// This function check the adding item is duplicate or not. if duplicate than show error
@@ -69,19 +66,21 @@ frappe.ui.form.on('Vehicle Price', {
 
 });
 
+
+// ==========================================================================================
+// 								For Other Vehicle Items child table
+// ==========================================================================================
+
 frappe.ui.form.on("Other Vehicle Items", {
 	item_qty: (frm, cdt, cdn) => {
 		let row = locals[cdt][cdn];
 		frm.calculate_amount_in_child_table(frm);
 		frm.calculate_total_qty_and_amount(frm);
-
-
 	},
 	item_rate: (frm, cdt, cdn) => {
 		var row = locals[cdt][cdn];
 		frm.calculate_amount_in_child_table(frm);
 		frm.calculate_total_qty_and_amount(frm);
-
 	},
 	table_remove: (frm, cdt, cdn) => {
 		var row = locals[cdt][cdn];
