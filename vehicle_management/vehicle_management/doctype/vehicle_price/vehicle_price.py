@@ -1,6 +1,6 @@
 # Author: Md Salah Uddin Mahamud
 # Date: 15-11-2023
-# This is python backend code for vehicle_price doctype of vehicle management ap
+# Description: This is python backend code for vehicle_price doctype of vehicle management ap
 
 import frappe
 from frappe.model.document import Document
@@ -34,7 +34,7 @@ class VehiclePrice(Document):
 
 	# For calculate grand total
 	def cal_grand_total(self):
-		if self.sale_price and self.total_amount:
+		if self.sale_price or self.total_amount:
 			self.grand_total= self.sale_price + self.total_amount
 
 
