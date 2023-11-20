@@ -22,6 +22,8 @@
   "cc",
   "column_break_zm4io",
   "description",
+  "supplier",
+  "purchase_order",
   "car_availability_status_tab",
   "status",
   "column_break_9wmoe",
@@ -199,12 +201,24 @@
    "fieldname": "other_details",
    "fieldtype": "Data",
    "label": "Other Details"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "purchase_order",
+   "fieldtype": "Link",
+   "label": "Purchase Order",
+   "options": "Purchase Order"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-11-12 10:07:25.195213",
+ "modified": "2023-11-20 15:44:58.518237",
  "modified_by": "Administrator",
  "module": "Vehicle Management",
  "name": "Vehicle Availability",

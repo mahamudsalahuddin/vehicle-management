@@ -14,6 +14,13 @@ frappe.ui.form.on('Material Request', {
             frm.set_value('custom_total_quantity', totalQty)
 			frm.set_value('custom_total', amount)
 		}
+		frm.show_in_words = (frm)=>{
+		// 	frappe.utils.money_in_words(doc.custom_in_words)
+		// let amounts= frm.doc.custom_in_words
+		// console.log(amounts)
+		// let a= frappe.utils.money_in_words(amounts)
+		console.log("h")
+		}
 	},
 });
 frappe.ui.form.on("Material Request Item", {
@@ -24,6 +31,8 @@ frappe.ui.form.on("Material Request Item", {
     item_code: (frm, cdt, cdn) => {
 		let row = locals[cdt][cdn];
 		frm.calculate_qty(frm);
+		frm.show_in_words(frm)
+
 	},
 	rate:(frm, cdt, cdn)=>{
 		let row= locals[cdt][cdn]
