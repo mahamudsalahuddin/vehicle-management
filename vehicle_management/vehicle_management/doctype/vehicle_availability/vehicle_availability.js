@@ -36,3 +36,24 @@ frappe.ui.form.on('Vehicle Availability', {
 		}
 	}
 });
+
+
+// This is use to filter purc supplier field
+frappe.ui.form.on("Vehicle Availability", {
+	"onload":function(frm) {
+		frm.set_query("purchase_order", function() {
+			if(!frm.doc.supplier){
+				frappe.msgprint("Please first select supplier")
+			}
+			else{
+				return {
+					"filters": {
+						"supplier": frm.doc.supplier,
+					}
+				};
+			}
+			
+		});
+	}
+});
+
