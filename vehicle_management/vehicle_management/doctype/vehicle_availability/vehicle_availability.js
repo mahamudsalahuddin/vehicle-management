@@ -38,7 +38,7 @@ frappe.ui.form.on('Vehicle Availability', {
 });
 
 
-// This is use to filter purc supplier field
+// This is use to filter purchase_order depends on supplier field
 frappe.ui.form.on("Vehicle Availability", {
 	"onload":function(frm) {
 		frm.set_query("purchase_order", function() {
