@@ -27,7 +27,7 @@
    "link_count": 0,
    "link_to": "Vehicle Report",
    "link_type": "Report",
-   "onboard": 0,
+   "onboard": 1,
    "type": "Link"
   },
   {
@@ -69,7 +69,7 @@
    "type": "Link"
   }
  ],
- "modified": "2023-11-12 13:07:43.055210",
+ "modified": "2023-11-26 11:13:22.790302",
  "modified_by": "Administrator",
  "module": "Vehicle Management",
  "name": "Vehicle Management",
