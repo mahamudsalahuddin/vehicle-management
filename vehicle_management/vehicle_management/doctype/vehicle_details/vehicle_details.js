@@ -10,3 +10,13 @@ frappe.ui.form.on('Vehicle Details', {
         // }
 	}
 });
+
+// frappe.db.get_doc('Vehicle Details', '121')
+//     .then(doc => {
+//         console.log(doc)
+//     })
+
+frappe.db.get_doc('Vehicle Details', null, {package : "45"})
+    .then(doc => {
+        console.log(doc)
+    })
