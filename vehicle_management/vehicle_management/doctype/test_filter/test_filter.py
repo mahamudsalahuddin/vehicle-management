@@ -2,7 +2,6 @@ import frappe
 from frappe.model.document import Document
 
 class TestFilter(Document):
-	# print("Hello")
 	pass
 
 # @frappe.whitelist()
@@ -12,6 +11,8 @@ class TestFilter(Document):
 
 @frappe.whitelist()
 def testFunction2(po):
-	query = frappe.get_all('Purchase Order', filters={"name": po}, fields=['transaction_date'])
-	# query= 5
-	return query
+	query_for_PO = frappe.db.get_all('Purchase Order', {"name": po}, "transaction_date, schedule_date, total, grand_total")
+	query_for_POI = frappe.db.get_all('Purchase Order Item', {"parent": po}, "item_code, item_name, uom, qty, rate, amount")
+	query= query_for_PO + query_for_POI
+
+	return query_for_PO, query_for_POI

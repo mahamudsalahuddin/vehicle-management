@@ -46,7 +46,7 @@
 // });
 
 
-// ===========fetch data using frappe.db.get_doc=========
+// ===========fetch data using frappe.db.get_all=========
 
 frappe.ui.form.on('Test Filter', {
 	"onload":function(frm) {
@@ -71,29 +71,25 @@ frappe.ui.form.on('Test Filter', {
 			method: "vehicle_management.vehicle_management.doctype.test_filter.test_filter.testFunction2",
 			args:{
 				po: purchase_order,
-				async: false,
 			}
 		})
-		// frappe.db.get_doc('Purchase Order', null, {name : purchase_order})
 		.then((r)=>{
-				// frm.doc.item= []
+					let a = r.message[0][0]
+					let b= r.message[1][0]
+					const obj = {...a, ...b}
 
-				// $.each(r, function(_i,e){
-					// let entry = frm.add_child("purchase_order_item")
-					// entry.posting_date = r.transaction_date
-					// entry.required_date = r.schedule_date
-					// entry.item_code = r.item_code
-					// entry.item_name = r.item_name
-					// entry.uom = r.uom
-					// entry.qty = r.qty
-					// entry.rate = r.rate
-					// entry.amount = r.amount
-					// entry.total = r.total
-					// entry.grand_total = r.grand_total
-					console.log(r)
-				// })
-				// refresh_field("purchase_order_item")
-			// }
+					let entry = frm.add_child("purchase_order_item")
+					entry.posting_date = obj.transaction_date
+					entry.required_date = obj.schedule_date
+					entry.item_code = obj.item_code
+					entry.item_name = obj.item_name
+					entry.uom = obj.uom
+					entry.qty = obj.qty
+					entry.rate = obj.rate
+					entry.amount = obj.amount
+					entry.total = obj.total
+					entry.grand_total = obj.grand_total
+				refresh_field("purchase_order_item")
 		})
 	}
 });
