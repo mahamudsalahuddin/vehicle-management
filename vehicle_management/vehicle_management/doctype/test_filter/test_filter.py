@@ -1,5 +1,6 @@
 import frappe
 from frappe.model.document import Document
+from frappe.query_builder import DocType
 
 class TestFilter(Document):
 	pass
@@ -25,8 +26,7 @@ class TestFilter(Document):
 
 
 # // ===========Fetch data using Query Builde========= 
-import frappe
-from frappe.query_builder import DocType
+
 
 @frappe.whitelist()
 def testFunction3(po):
