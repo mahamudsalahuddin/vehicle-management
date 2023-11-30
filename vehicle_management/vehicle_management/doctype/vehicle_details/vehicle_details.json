@@ -21,7 +21,8 @@
   "seat_capacity",
   "origin_country",
   "section_break_iia6f",
-  "description"
+  "description",
+  "amended_from"
  ],
  "fields": [
   {
@@ -100,11 +101,21 @@
    "fieldtype": "Link",
    "label": "Origin Country",
    "options": "Country"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Vehicle Details",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2023-11-09 12:12:13.138839",
+ "modified": "2023-11-30 16:41:40.910230",
  "modified_by": "Administrator",
  "module": "Vehicle Management",
  "name": "Vehicle Details",
@@ -120,6 +131,32 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "select": 1,
    "share": 1,
    "write": 1
   }

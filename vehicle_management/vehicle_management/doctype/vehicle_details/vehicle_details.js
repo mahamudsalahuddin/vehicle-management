@@ -1,22 +1,17 @@
-// Copyright (c) 2023, salahuddin and contributors
-// For license information, please see license.
-
 frappe.ui.form.on('Vehicle Details', {
 	refresh: function(frm) {
-		// if (frm.doc.car_model && frm.doc.chassis_number) {
-        //     frm.add_custom_button(__(frm.doc.car_model), () => {
-        //         frappe.set_route("Form", frm.doc.chassis_number, frm.doc.car_model);
-        //     });
-        // }
+        let a =frm.doc.chassis_number
+		frm.add_custom_button(__("Vehicle Statement"), function(){
+            frappe.model.open_mapped_doc({
+                method: "vehicle_management.vehicle_management.doctype.vehicle_details.vehicle_details.VehicleDetailsFunction",
+                frm: cur_frm,
+                // run_link_triggers: true
+            });
+        }, __("Create"));
+        
+        frm.add_custom_button(__("Vehicle Price"), function(){
+            console.log(frm.doc.name)
+        }, __("Create"));
+        
 	}
 });
-
-// frappe.db.get_doc('Vehicle Details', '121')
-//     .then(doc => {
-//         console.log(doc)
-//     })
-
-frappe.db.get_doc('Vehicle Details', null, {package : "45"})
-    .then(doc => {
-        console.log(doc)
-    })
