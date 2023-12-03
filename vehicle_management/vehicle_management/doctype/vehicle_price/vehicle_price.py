@@ -37,4 +37,31 @@ class VehiclePrice(Document):
 		if self.sale_price or self.total_amount:
 			self.grand_total= self.sale_price + self.total_amount
 
+	def on_submit(self):
+		chassis_number = self.vehicle_chassis_no
+		vehicle_details_doc = frappe.get_doc("Vehicle Details", chassis_number)
+		vehicle_details_doc.customer = self.customer
+		vehicle_details_doc.is_sold = self.is_sold 
+		vehicle_details_doc.save()
+
+		# for vehicle availability
+		# vehicle_availability_doc = frappe.get_doc({
+		# 	 'doctype': 'Vehicle Availability',
+    	# 	'vehicle_chassis_no': chassis_number
+		# })
+		# vehicle_availability_doc.customer = self.customer
+		# vehicle_availability_doc.is_sold = self.is_sold 
+		# vehicle_availability_doc.save()
+		# print("=====================================")
+		# print(vehicle_availability_doc.customer)
+
+
+		
+	def on_cancel(self):
+		chassis_number = self.vehicle_chassis_no
+		vehicle_details_doc = frappe.get_doc("Vehicle Details", chassis_number)
+		vehicle_details_doc.customer = ""
+		vehicle_details_doc.is_sold = False 
+		vehicle_details_doc.save()
+
 

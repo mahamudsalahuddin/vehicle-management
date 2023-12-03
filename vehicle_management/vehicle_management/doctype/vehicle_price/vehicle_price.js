@@ -2,6 +2,11 @@
 // 										For Vehicle Price doctype
 // ==========================================================================================
 frappe.ui.form.on('Vehicle Price', {
+	refresh: function(frm){
+		if(frm.doc.docstatus===0 && frm.doc.is_sold === 0){
+			frm.toggle_display('customer', false);
+		}
+	},
 	company_price: function (frm) {
 		frm.calculate_sale_price(frm)
 		// It call here for grand total
@@ -11,6 +16,17 @@ frappe.ui.form.on('Vehicle Price', {
 		frm.calculate_sale_price(frm)
 		// It call here for grand total
 		frm.calculate_grand_total(frm)
+	},
+	is_sold: function(frm){
+		// When click on Check the field will empty
+		frm.doc.customer = ""
+		// if check on then customer field show otherwise empty
+		frm.toggle_display('customer', frm.doc.is_sold === 1);
+		if(frm.doc.is_sold === 1){
+			frm.toggle_reqd('customer', true);
+		}else{
+			frm.toggle_reqd('customer', false);
+		}
 	},
 
 	setup:(frm) => {

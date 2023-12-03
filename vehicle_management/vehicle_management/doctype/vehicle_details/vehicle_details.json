@@ -22,7 +22,9 @@
   "origin_country",
   "section_break_iia6f",
   "description",
-  "amended_from"
+  "amended_from",
+  "is_sold",
+  "customer"
  ],
  "fields": [
   {
@@ -110,12 +112,28 @@
    "options": "Vehicle Details",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "is_sold",
+   "fieldtype": "Check",
+   "label": "Is Sold",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-11-30 16:41:40.910230",
+ "modified": "2023-12-03 16:18:59.036864",
  "modified_by": "Administrator",
  "module": "Vehicle Management",
  "name": "Vehicle Details",

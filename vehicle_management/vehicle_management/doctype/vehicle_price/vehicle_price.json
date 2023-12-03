@@ -12,6 +12,8 @@
   "vehicle_info_section",
   "vehicle_chassis_no",
   "vehicle_name",
+  "is_sold",
+  "customer",
   "vehicle_price_tab",
   "company_price",
   "customer_price",
@@ -136,12 +138,24 @@
    "options": "VA-NO-.YYYY.-",
    "reqd": 1,
    "set_only_once": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_sold",
+   "fieldtype": "Check",
+   "label": "Is Sold"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-11-12 18:02:26.722363",
+ "modified": "2023-12-03 12:18:45.030001",
  "modified_by": "Administrator",
  "module": "Vehicle Management",
  "name": "Vehicle Price",
