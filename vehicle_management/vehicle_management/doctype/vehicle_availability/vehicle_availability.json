@@ -22,6 +22,8 @@
   "cc",
   "column_break_zm4io",
   "description",
+  "is_sold",
+  "customer",
   "supplier",
   "purchase_order",
   "car_availability_status_tab",
@@ -56,7 +58,8 @@
    "fieldname": "vehicle_chassis_no",
    "fieldtype": "Link",
    "label": "Vehicle Chassis no.",
-   "options": "Vehicle Details"
+   "options": "Vehicle Details",
+   "reqd": 1
   },
   {
    "fetch_from": "vehicle_chassis_no.car_model",
@@ -205,20 +208,38 @@
   {
    "fieldname": "supplier",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Supplier",
    "options": "Supplier"
   },
   {
    "fieldname": "purchase_order",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Purchase Order",
    "options": "Purchase Order"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "is_sold",
+   "fieldtype": "Check",
+   "label": "Is Sold",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-11-30 16:40:52.411911",
+ "modified": "2023-12-04 16:23:36.749407",
  "modified_by": "Administrator",
  "module": "Vehicle Management",
  "name": "Vehicle Availability",

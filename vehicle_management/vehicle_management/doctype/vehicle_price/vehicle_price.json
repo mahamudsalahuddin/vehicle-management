@@ -45,7 +45,8 @@
    "fieldname": "vehicle_chassis_no",
    "fieldtype": "Link",
    "label": "Vehicle Chassis no.",
-   "options": "Vehicle Details"
+   "options": "Vehicle Details",
+   "reqd": 1
   },
   {
    "fetch_from": "vehicle_chassis_no.car_model",
@@ -140,12 +141,14 @@
    "set_only_once": 1
   },
   {
+   "allow_on_submit": 1,
    "default": "0",
    "fieldname": "is_sold",
    "fieldtype": "Check",
    "label": "Is Sold"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "customer",
    "fieldtype": "Link",
    "label": "Customer",
@@ -155,7 +158,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-12-03 12:18:45.030001",
+ "modified": "2023-12-04 16:41:19.227117",
  "modified_by": "Administrator",
  "module": "Vehicle Management",
  "name": "Vehicle Price",
