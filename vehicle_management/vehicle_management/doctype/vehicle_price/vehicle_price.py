@@ -60,19 +60,23 @@ class VehiclePrice(Document):
 
     def VPriceToVAvailability(self):
         chassis_number = self.vehicle_chassis_no
-        # doc_count = frappe.db.count(
-        #     "Vehicle Availability", {"vehicle_chassis_no": chassis_number}
-        # )
-        doc_name = frappe.db.get_value(
-            "Vehicle Availability", {"vehicle_chassis_no": chassis_number}, "name"
+        doc_count = frappe.db.count(
+            "Vehicle Availability", {"vehicle_chassis_no": chassis_number}
         )
-        doc = frappe.get_doc("Vehicle Availability", doc_name)
+        if doc_count <= 0:
+            if self.docstatus == 1:
+                frappe.throw("Availability entry is empty")
+        else:
+            doc_name = frappe.db.get_value(
+                "Vehicle Availability", {"vehicle_chassis_no": chassis_number}, "name"
+            )
+            doc = frappe.get_doc("Vehicle Availability", doc_name)
 
-        if self.docstatus == 1:
-            doc.is_sold = self.is_sold
-            doc.customer = self.customer
-            doc.save()
-        elif self.docstatus == 2:
-            doc.is_sold = False
-            doc.customer = ""
-            doc.save()
+            if self.docstatus == 1:
+                doc.is_sold = self.is_sold
+                doc.customer = self.customer
+                doc.save()
+            elif self.docstatus == 2:
+                doc.is_sold = False
+                doc.customer = ""
+                doc.save()
